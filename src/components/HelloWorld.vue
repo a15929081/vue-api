@@ -11,7 +11,7 @@
         <td class="a">{{index.tel}}</td>
       </tr>
     </table>
-    <button>显示</button>
+    <button @click="xianshi">显示</button>
  </div>
 </template>
 
@@ -26,19 +26,20 @@ export default {
       syk: ""
     };
   },
-
-  created() {
-    this.axios
-      .get("http://localhost:60020/all")
-      .then(response => {
-        console.log(response);
-        this.syk = response.data.data;
-        console.log(this.syk);
-      })
-      .catch(error => {
-        console.log(error);
-      });
-  }
+methods:{
+    xianshi:function () {
+      this.axios
+              .get("http://localhost:60020/all")
+              .then(response => {
+                console.log(response);
+                this.syk = response.data.data;
+                console.log(this.syk);
+              })
+              .catch(error => {
+                console.log(error);
+              });
+    }
+    }
 }
 </script>
 
